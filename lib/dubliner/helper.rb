@@ -25,7 +25,7 @@ module Helper
         customers.push(c)
       end
     rescue JSON::ParserError
-      raise "Malformed JSON in file #{f.to_s}, line #{malformed_line}"
+      raise "Malformed JSON in file #{File.basename(f.path)}, line #{malformed_line}"
     end
     customers
   end

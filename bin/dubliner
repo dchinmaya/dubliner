@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'dubliner'
+
+USAGE="*****************USAGE******************\ndubliner <path-to-file-containing-customer-info>"
+
+if ARGV.size != 1
+  puts USAGE
+  exit 1
+end
+dubliner = Dubliner.new(53.3381985, -6.2592576)
+dubliner.getInvitees(ARGV[0])
+

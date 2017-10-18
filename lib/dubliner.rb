@@ -47,16 +47,3 @@ class Dubliner
   end
   VERSION = '0.1.0'
 end
-
-
-USAGE="*****************USAGE******************\nruby <path-to-dubliner.rb> <path-to-customers.txt>"
-
-# Only run the script if it is run by itself. Skip the run within spec tests
-if $PROGRAM_NAME == __FILE__
-  if ARGV.size != 1
-    puts USAGE
-    exit 1
-  end
-  dubliner = Dubliner.new(53.3381985, -6.2592576)
-  dubliner.getInvitees(ARGV[0])
-end
