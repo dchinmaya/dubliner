@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "dubliner"
   spec.version       = Dubliner::VERSION
   spec.authors       = ["Chinmaya Dattathri"]
-  spec.email         = ["chinmayad@yahoo-inc.com"]
+  spec.email         = ["d.chinmaya@gmail.com"]
 
   spec.summary       = %q{Find cool folks for your party who don't end up crashing at your place.}
   spec.description   = %q{Find cool folks for your party who don't end up crashing at your place.}
