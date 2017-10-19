@@ -33,7 +33,7 @@ module Helper
   # input : latitude, longitude of point 1 in rads, latitude, longitude of point 2 in rads
   # output : distance between the two points in kms
   def distanceCalculator(la1, lo1, la2, lo2)
-    return 0 if la1 == nil || la2 == nil || lo1 == nil || lo2 == nil
+    raise ArgumentError.new('Latitude and Longitude cant be nil') if la1 == nil || la2 == nil || lo1 == nil || lo2== nil
     delLambda = (lo2-lo1).to_f
     numerator = Math.sqrt(((Math.cos(la2) * Math.sin(delLambda)) ** 2) +
                 ((Math.cos(la1) * Math.sin(la2) - Math.sin(la1) * Math.cos(la2) * Math.cos(delLambda)) ** 2))
