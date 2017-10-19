@@ -8,12 +8,12 @@ class Dubliner
   end
 
   def latitude=(l)
-    raise ArgumentError.new("latitude #{l} is invalid") unless l
+    raise ArgumentError, "latitude #{l} is invalid" unless l
     @latitude = (l.to_f * Math::PI) / 180
   end
 
   def longitude=(l)
-    raise ArgumentError.new("longitude #{l} is invalid") unless l
+    raise ArgumentError, "longitude #{l} is invalid" unless l
     @longitude = (l.to_f * Math::PI) / 180
   end
 
@@ -24,13 +24,12 @@ class Dubliner
     longestName = 0
     customers.each do |c|
       distance = distanceCalculator(c.latitude, c.longitude, @latitude, @longitude)
-      if distance < 100.0
-        c.distance = distance
-        invitees.push(c)
-        longestName = c.name.length unless longestName >=c.name.length
-      end
+      next unless distance < 100.0
+      c.distance = distance
+      invitees.push(c)
+      longestName = c.name.length unless longestName >= c.name.length
     end
-    invitees.sort_by! {|i| i.user_id}
+    invitees.sort_by!(&:user_id)
     printInvitees(invitees, longestName)
   end
 
@@ -45,5 +44,5 @@ class Dubliner
     end
     puts '-------------------------------------------------------------------------'
   end
-  VERSION = '0.1.0'
+  VERSION = '0.1.0'.freeze
 end
