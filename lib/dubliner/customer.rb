@@ -17,22 +17,18 @@ class Customer
   end
 
   def latitude=(l)
-    raise "latitude #{l} is invalid" unless (l && ((l.to_f.to_s == l) || (l.to_i.to_s == l)))
+    raise "latitude #{l} is invalid" unless l && ((l.to_f.to_s == l) || (l.to_i.to_s == l))
     @latitude = (l.to_f * Math::PI) / 180
   end
 
   def longitude=(l)
-    raise "longitude #{l} is invalid" unless (l && ((l.to_f.to_s == l) || (l.to_i.to_s == l)))
+    raise "longitude #{l} is invalid" unless l && ((l.to_f.to_s == l) || (l.to_i.to_s == l))
     @longitude = (l.to_f * Math::PI) / 180
   end
 
-  def distance=(d)
-    @distance = d
-  end
+  attr_writer :distance
 
-  def distance
-    @distance
-  end
+  attr_reader :distance
 
   attr_reader :user_id, :latitude, :longitude, :name
 end

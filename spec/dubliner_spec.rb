@@ -34,46 +34,46 @@ EOF
   end
 
   it 'raises exception if latitude is not provided' do
-    expect {Dubliner.new(nil,nil)}.to raise_error(ArgumentError)
+    expect { Dubliner.new(nil, nil) }.to raise_error(ArgumentError)
   end
 
   it 'works fine when input is fine' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/customers.txt')}.to output(results).to_stdout
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/customers.txt') }.to output(results).to_stdout
   end
 
   it 'raises exception if input file is absent' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees('_i_do_not_exist')}.to raise_error(ArgumentError)
+    expect { d.getInvitees('_i_do_not_exist') }.to raise_error(ArgumentError)
   end
 
   it 'raises exception with malformed json input' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/bad_bad_json.txt')}.to raise_error(RuntimeError)
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/bad_bad_json.txt') }.to raise_error(RuntimeError)
   end
 
   it 'raises exception with valid json and missing name' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/no_name.txt')}.to raise_error(RuntimeError)
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/no_name.txt') }.to raise_error(RuntimeError)
   end
 
   it 'raises exception with valid json and missing user_id' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/no_userid.txt')}.to raise_error(RuntimeError)
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/no_userid.txt') }.to raise_error(RuntimeError)
   end
 
   it 'raises exception with valid json and missing latitude' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/no_lat.txt')}.to raise_error(RuntimeError)
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/no_lat.txt') }.to raise_error(RuntimeError)
   end
 
   it 'raises exception with valid json and missing longitude' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/no_long.txt')}.to raise_error(RuntimeError)
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/no_long.txt') }.to raise_error(RuntimeError)
   end
 
   it 'runs fine with empty file input' do
     d = Dubliner.new(53.3381985, -6.2592576)
-    expect{d.getInvitees(File.dirname(__FILE__) + '/files/empty.txt')}.to output(empty_list).to_stdout
+    expect { d.getInvitees(File.dirname(__FILE__) + '/files/empty.txt') }.to output(empty_list).to_stdout
   end
 end
