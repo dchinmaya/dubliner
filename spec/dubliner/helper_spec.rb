@@ -30,7 +30,7 @@ describe Helper do
       expect(@dummy.jsonParse(File.new(File.dirname(__FILE__) + '/../files/single_customer.txt')).first).to eq(testObj)
     end
 
-    it 'raises ecception for malformed json' do
+    it 'raises exception for malformed json' do
       expect{@dummy.jsonParse(File.new(File.dirname(__FILE__) + '/../files/bad_bad_json.txt'))}.to raise_error(RuntimeError)
     end
   end
@@ -41,8 +41,8 @@ describe Helper do
                                        -7 * Math::PI/180)).to eq(75.10216259555153)
     end
 
-    it 'returns valid zero output for nil inputs' do
-      expect(@dummy.distanceCalculator(nil,0.123, nil, -0.456)).to eq(0)
+    it 'raises argument error for nil inputs' do
+      expect{@dummy.distanceCalculator(nil,0.123, nil, -0.456)}.to raise_error(ArgumentError)
     end
   end
 end
